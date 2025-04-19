@@ -88,8 +88,8 @@ The AdapterWithAttention replaces the standard MLP-only adapters with:
 
 1. **Clone the Repository:**
     ```bash
-    git clone https://github.com/yourusername/enhanced-stable-diffusion.git
-    cd enhanced-stable-diffusion
+    git clone https://github.com/yourusername/MVFA-AD-enhanced.git
+    cd MVFA-AD-enhanced
     ```
 
 2. **Set Up the Environment:**
