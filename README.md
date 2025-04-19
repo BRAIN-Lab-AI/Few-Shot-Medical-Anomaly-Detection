@@ -1,4 +1,4 @@
-# MVFA-AD Enhanced: Multi-View Few-Shot Medical Anomaly Detection with Prompt Optimization and Attention Adapters
+# PG-Attention: Prompt-Guided Attention Adapter for Multi-View Few-Shot Medical Anomaly Detection
 
 
 ## Introduction
