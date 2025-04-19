@@ -1,16 +1,22 @@
-# Enhances Text-to-Image Synthesis using Stable Diffusion Models
+# Multi-View Few-Shot Medical Anomaly Detection with Prompt Optimization and Attention Adapters
 
 Below is a template for another sample project. Please follow this template.
 # [Deep Learning Project Template] Enhanced Stable Diffusion: A Deep Learning Approach for Artistic Image Generation
 
 ## Introduction
-Enhanced Stable Diffusion is a cutting-edge deep learning project that redefines artistic image generation by leveraging an advanced diffusion process to convert textual descriptions into high-quality images. By integrating a modified UNet architecture with innovative loss functions and enhanced data augmentation strategies, the model iteratively refines a latent noise vector conditioned on text embeddings to produce detailed and visually compelling artwork. This approach not only addresses common challenges such as slow inference times and output inconsistencies found in traditional diffusion models, but also pushes the boundaries of creative image synthesis, paving the way for novel applications in art, design, and multimedia content creation.
+MVFA-AD Enhanced builds on the original MVFA-AD repository by incorporating intelligent text prompting and an advanced adapter design using attention mechanisms. The improved architecture boosts few-shot anomaly detection performance across diverse medical image modalities such as brain MRI, liver CT, and retinal OCT.
+
+Our enhancements center on:
+
+Prompt Engineering: Designing task-specific, domain-aware prompts that better align with visual cues.
+
+Attention-Enhanced Adapters: Integrating AdapterWithAttention modules that leverage self-attention to improve representation adaptation.
 
 ## Project Metadata
 ### Authors
-- **Team:** Mohammad Ahmad, Umar Abdullah and Malik Hussain
+- **Team:** Alhanoof Alhunief 
 - **Supervisor Name:** Dr. Muzammil Behzad
-- **Affiliations:** SABIC, ARAMCO and KFUPM
+- **Affiliations:** KFUPM
 
 ### Project Documents
 - **Presentation:** [Project Presentation](/presentation.pptx)
@@ -26,60 +32,97 @@ Enhanced Stable Diffusion is a cutting-edge deep learning project that redefines
 ## Project Technicalities
 
 ### Terminologies
-- **Diffusion Model:** A generative model that progressively transforms random noise into coherent data.
-- **Latent Space:** A compressed, abstract representation of data where complex features are captured.
-- **UNet Architecture:** A neural network with an encoder-decoder structure featuring skip connections for better feature preservation.
-- **Text Encoder:** A model that converts text into numerical embeddings for downstream tasks.
-- **Perceptual Loss:** A loss function that measures high-level differences between images, emphasizing perceptual similarity.
-- **Tokenization:** The process of breaking down text into smaller units (tokens) for processing.
-- **Noise Vector:** A randomly generated vector used to initialize the diffusion process in generative models.
-- **Decoder:** A network component that transforms latent representations back into image space.
-- **Iterative Refinement:** The process of gradually improving the quality of generated data through multiple steps.
-- **Conditional Generation:** The process where outputs are generated based on auxiliary inputs, such as textual descriptions.
+- **CLIP Model:** Vision-language model used for text-to-image feature alignment.
+- **Adapter Module:** Lightweight fine-tunable module inserted in large pre-trained models.
+- **Few-Shot Learning:** Training with only a small number of samples per class.
+- **Prompt Engineering:** Designing natural language text prompts to guide CLIP feature extraction.
+- **Self-Attention:** Mechanism for learning dependencies between features.
 
 ### Problem Statements
-- **Problem 1:** Achieving high-resolution and detailed images using conventional diffusion models remains challenging.
-- **Problem 2:** Existing models suffer from slow inference times during the image generation process.
-- **Problem 3:** There is limited capability in performing style transfer and generating diverse artistic variations.
+- **Problem 1:** Generic prompts in zero/few-shot tasks lead to sub-optimal alignment with medical image features.
+- **Problem 2:** Plain MLP adapters may not capture critical inter-token relationships in the image embeddings.
 
-### Loopholes or Research Areas
-- **Evaluation Metrics:** Lack of robust metrics to effectively assess the quality of generated images.
-- **Output Consistency:** Inconsistencies in output quality when scaling the model to higher resolutions.
-- **Computational Resources:** Training requires significant GPU compute resources, which may not be readily accessible.
+# MVFA-AD Enhanced: Multi-View Few-Shot Medical Anomaly Detection with Prompt Optimization and Attention Adapters
 
-### Problem vs. Ideation: Proposed 3 Ideas to Solve the Problems
-1. **Optimized Architecture:** Redesign the model architecture to improve efficiency and balance image quality with faster inference.
-2. **Advanced Loss Functions:** Integrate novel loss functions (e.g., perceptual loss) to better capture artistic nuances and structural details.
-3. **Enhanced Data Augmentation:** Implement sophisticated data augmentation strategies to improve the model’s robustness and reduce overfitting.
+## Introduction
+MVFA-AD Enhanced builds on the original [MVFA-AD repository](https://github.com/MediaBrain-SJTU/MVFA-AD) by incorporating intelligent text prompting and an advanced adapter design using attention mechanisms. The improved architecture boosts few-shot anomaly detection performance across diverse medical image modalities such as brain MRI, liver CT, chest X-rays, and retinal OCT.
 
-### Proposed Solution: Code-Based Implementation
-This repository provides an implementation of the enhanced stable diffusion model using PyTorch. The solution includes:
+Our enhancements center on:
+- **Prompt Engineering**: Designing task-specific, domain-aware prompts that better align with visual cues.
+- **Attention-Enhanced Adapters**: Integrating `AdapterWithAttention` modules that leverage self-attention to improve representation adaptation.
+- **Visualization Tools**: Generating interpretable attention maps during training.
 
-- **Modified UNet Architecture:** Incorporates residual connections and efficient convolutional blocks.
-- **Novel Loss Functions:** Combines Mean Squared Error (MSE) with perceptual loss to enhance feature learning.
-- **Optimized Training Loop:** Reduces computational overhead while maintaining performance.
+## Project Metadata
+### Authors
+- **Developer:** Alhanoof Alhunief  
+- **Organization:** SDAIA-KFUPM Joint Research Center for AI  
+- **Thesis Contribution:** Applied research enhancement to improve anomaly detection in medical imagery using adapters and prompt design.
 
-### Key Components
-- **`model.py`**: Contains the modified UNet architecture and other model components.
-- **`train.py`**: Script to handle the training process with configurable parameters.
-- **`utils.py`**: Utility functions for data processing, augmentation, and metric evaluations.
-- **`inference.py`**: Script for generating images using the trained model.
+### Project Documents
+- **Report:** [Project Report](/report.pdf)
+- **Slides:** [Presentation](/presentation.pptx)
+
+### Reference Base Code
+- Original Repo: [MVFA-AD](https://github.com/MediaBrain-SJTU/MVFA-AD)
+
+## Project Technicalities
+
+### Terminologies
+- **CLIP Model**: Vision-language model used for text-to-image feature alignment.
+- **Adapter Module**: Lightweight fine-tunable module inserted in large pre-trained models.
+- **Few-Shot Learning**: Training with only a small number of samples per class.
+- **Prompt Engineering**: Designing natural language text prompts to guide CLIP feature extraction.
+- **Self-Attention**: Mechanism for learning dependencies between features.
+
+### Problem Statements
+- Generic prompts in zero/few-shot tasks lead to sub-optimal alignment with medical image features.
+- Plain MLP adapters may not capture critical inter-token relationships in the image embeddings.
+
+### Proposed Enhancements
+
+#### 1. Prompt Engineering
+A new set of medically-informed prompts was developed to improve vision-language alignment. Examples include:
+```python
+TEMPLATES = [
+    "a medical image of a normal {}.",
+    "a scan showing disease in the {}.",
+    "an image of an abnormal {} under a microscope.",
+    # ... (13 total templates)
+]
+REAL_NAME = {
+    'Brain': 'brain',
+    'Liver': 'liver',
+    'Retina_RESC': 'retina (OCT)',
+    'Chest': 'chest X-ray',
+    'Retina_OCT2017': 'retina (OCT)',
+    'Histopathology': 'histopathological tissue'
+} 
+```
+
+#### 2. Attention-Enhanced Adapters
+
+The AdapterWithAttention replaces the standard MLP-only adapters with:
+- Self-attention blocks
+- Layer normalization
+- Residual MLPs
+
 
 ## Model Workflow
-The workflow of the Enhanced Stable Diffusion model is designed to translate textual descriptions into high-quality artistic images through a multi-step diffusion process:
 
-1. **Input:**
-   - **Text Prompt:** The model takes a text prompt (e.g., "A surreal landscape with mountains and rivers") as the primary input.
-   - **Tokenization:** The text prompt is tokenized and processed through a text encoder (such as a CLIP model) to obtain meaningful embeddings.
-   - **Latent Noise:** A random latent noise vector is generated to initialize the diffusion process, which is then conditioned on the text embeddings.
+1. **Few-Shot Training Pipeline**
+   ``` python
+   python train_few.py --obj Liver --shot 4
+   ```
+  - Performs anomaly detection using CLIP + AdapterWithAttention
+  - Uses advanced prompt templates
+  - Stores model checkpoints in ./ckpt/few-shot/
 
-2. **Diffusion Process:**
-   - **Iterative Refinement:** The conditioned latent vector is fed into a modified UNet architecture. The model iteratively refines this vector by reversing a diffusion process, gradually reducing noise while preserving the text-conditioned features.
-   - **Intermediate States:** At each step, intermediate latent representations are produced that increasingly capture the structure and details dictated by the text prompt.
-
-3. **Output:**
-   - **Decoding:** The final refined latent representation is passed through a decoder (often part of a Variational Autoencoder setup) to generate the final image.
-   - **Generated Image:** The output is a synthesized image that visually represents the input text prompt, complete with artistic style and detail.
+2. **Dataset Support**
+   Liver: https://drive.google.com/file/d/1xriF0uiwrgoPh01N6GlzE5zPi_OIJG1I/view?usp=sharing
+   Brain: https://drive.google.com/file/d/1YxcjcQqsPdkDO0rqIVHR5IJbqS9EIyoK/view?usp=sharing
+   HIS: https://drive.google.com/file/d/1hueVJZCFIZFHBLHFlv1OhqF8SFjUVHk6/view?usp=sharing
+   RESC: https://drive.google.com/file/d/1BqDbK-7OP5fUha5zvS2XIQl-_t8jhTpX/view?usp=sharing
+   OCT17: https://drive.google.com/file/d/1GqT0V3_3ivXPAuTn4WbMM6B9i0JQcSnM/view?usp=sharing
 
 ## How to Run the Code
 
@@ -96,23 +139,28 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
     source venv/bin/activate  # On Windows use: venv\Scripts\activate
     pip install -r requirements.txt
     ```
+    
+3. **Quick Start**
+   ``` bash
+   python test_few.py --obj $target-object --shot $few-shot-number
+   ``` 
+   For example, to test on the Brain MRI with k=4, simply run:
+   ``` bash
+   python test_few.py --obj Brain --shot 4
+   ```
+   
+4. **Train the Model:**
+   ``` bash
+   python train_few.py --obj $target-object --shot $few-shot-number
+   ```
+   For example, to train on the Brain MRI with k=4, simply run:
+   ``` bash
+   python train_few.py --obj Brain --shot 4
+   ```
 
-3. **Train the Model:**
-    Configure the training parameters in the provided configuration file and run:
-    ```bash
-    python train.py --config configs/train_config.yaml
-    ```
-
-4. **Generate Images:**
-    Once training is complete, use the inference script to generate images.
-    ```bash
-    python inference.py --checkpoint path/to/checkpoint.pt --input "A surreal landscape with mountains and rivers"
-    ```
 
 ## Acknowledgments
-- **Open-Source Communities:** Thanks to the contributors of PyTorch, Hugging Face, and other libraries for their amazing work.
-- **Individuals:** Special thanks to bla, bla, bla for the amazing team effort, invaluable guidance and support throughout this project.
-- **Resource Providers:** Gratitude to ABC-organization for providing the computational resources necessary for this project.
+MediaBrain-SJTU for the original MVFA-AD repo.
 
 
 
