@@ -1,10 +1,8 @@
-# Multi-View Few-Shot Medical Anomaly Detection with Prompt Optimization and Attention Adapters
+# MVFA-AD Enhanced: Multi-View Few-Shot Medical Anomaly Detection with Prompt Optimization and Attention Adapters
 
-Below is a template for another sample project. Please follow this template.
-# [Deep Learning Project Template] Enhanced Stable Diffusion: A Deep Learning Approach for Artistic Image Generation
 
 ## Introduction
-MVFA-AD Enhanced builds on the original MVFA-AD repository by incorporating intelligent text prompting and an advanced adapter design using attention mechanisms. The improved architecture boosts few-shot anomaly detection performance across diverse medical image modalities such as brain MRI, liver CT, and retinal OCT.
+MVFA-AD Enhanced builds on the original [MVFA-AD repository](https://github.com/MediaBrain-SJTU/MVFA-AD) repository by incorporating intelligent text prompting and an advanced adapter design using attention mechanisms. The improved architecture boosts few-shot anomaly detection performance across diverse medical image modalities such as brain MRI, liver CT, and retinal OCT.
 
 Our enhancements center on:
 
@@ -23,10 +21,7 @@ Attention-Enhanced Adapters: Integrating AdapterWithAttention modules that lever
 - **Report:** [Project Report](/report.pdf)
 
 ### Reference Paper
-- [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752)
-
-### Reference Dataset
-- [LAION-5B Dataset](https://laion.ai/blog/laion-5b/)
+- [Adapting Visual-Language Models for Generalizable Anomaly Detection in Medical Images](https://openaccess.thecvf.com/content/CVPR2024/papers/Huang_Adapting_Visual-Language_Models_for_Generalizable_Anomaly_Detection_in_Medical_Images_CVPR_2024_paper.pdf)
 
 
 ## Project Technicalities
@@ -42,41 +37,6 @@ Attention-Enhanced Adapters: Integrating AdapterWithAttention modules that lever
 - **Problem 1:** Generic prompts in zero/few-shot tasks lead to sub-optimal alignment with medical image features.
 - **Problem 2:** Plain MLP adapters may not capture critical inter-token relationships in the image embeddings.
 
-# MVFA-AD Enhanced: Multi-View Few-Shot Medical Anomaly Detection with Prompt Optimization and Attention Adapters
-
-## Introduction
-MVFA-AD Enhanced builds on the original [MVFA-AD repository](https://github.com/MediaBrain-SJTU/MVFA-AD) by incorporating intelligent text prompting and an advanced adapter design using attention mechanisms. The improved architecture boosts few-shot anomaly detection performance across diverse medical image modalities such as brain MRI, liver CT, chest X-rays, and retinal OCT.
-
-Our enhancements center on:
-- **Prompt Engineering**: Designing task-specific, domain-aware prompts that better align with visual cues.
-- **Attention-Enhanced Adapters**: Integrating `AdapterWithAttention` modules that leverage self-attention to improve representation adaptation.
-- **Visualization Tools**: Generating interpretable attention maps during training.
-
-## Project Metadata
-### Authors
-- **Developer:** Alhanoof Alhunief  
-- **Organization:** SDAIA-KFUPM Joint Research Center for AI  
-- **Thesis Contribution:** Applied research enhancement to improve anomaly detection in medical imagery using adapters and prompt design.
-
-### Project Documents
-- **Report:** [Project Report](/report.pdf)
-- **Slides:** [Presentation](/presentation.pptx)
-
-### Reference Base Code
-- Original Repo: [MVFA-AD](https://github.com/MediaBrain-SJTU/MVFA-AD)
-
-## Project Technicalities
-
-### Terminologies
-- **CLIP Model**: Vision-language model used for text-to-image feature alignment.
-- **Adapter Module**: Lightweight fine-tunable module inserted in large pre-trained models.
-- **Few-Shot Learning**: Training with only a small number of samples per class.
-- **Prompt Engineering**: Designing natural language text prompts to guide CLIP feature extraction.
-- **Self-Attention**: Mechanism for learning dependencies between features.
-
-### Problem Statements
-- Generic prompts in zero/few-shot tasks lead to sub-optimal alignment with medical image features.
-- Plain MLP adapters may not capture critical inter-token relationships in the image embeddings.
 
 ### Proposed Enhancements
 
@@ -118,11 +78,11 @@ The AdapterWithAttention replaces the standard MLP-only adapters with:
   - Stores model checkpoints in ./ckpt/few-shot/
 
 2. **Dataset Support**
-   Liver: https://drive.google.com/file/d/1xriF0uiwrgoPh01N6GlzE5zPi_OIJG1I/view?usp=sharing
-   Brain: https://drive.google.com/file/d/1YxcjcQqsPdkDO0rqIVHR5IJbqS9EIyoK/view?usp=sharing
-   HIS: https://drive.google.com/file/d/1hueVJZCFIZFHBLHFlv1OhqF8SFjUVHk6/view?usp=sharing
-   RESC: https://drive.google.com/file/d/1BqDbK-7OP5fUha5zvS2XIQl-_t8jhTpX/view?usp=sharing
-   OCT17: https://drive.google.com/file/d/1GqT0V3_3ivXPAuTn4WbMM6B9i0JQcSnM/view?usp=sharing
+   - Liver: https://drive.google.com/file/d/1xriF0uiwrgoPh01N6GlzE5zPi_OIJG1I/view?usp=sharing
+   - Brain: https://drive.google.com/file/d/1YxcjcQqsPdkDO0rqIVHR5IJbqS9EIyoK/view?usp=sharing
+   - HIS: https://drive.google.com/file/d/1hueVJZCFIZFHBLHFlv1OhqF8SFjUVHk6/view?usp=sharing
+   - RESC: https://drive.google.com/file/d/1BqDbK-7OP5fUha5zvS2XIQl-_t8jhTpX/view?usp=sharing
+   - OCT17: https://drive.google.com/file/d/1GqT0V3_3ivXPAuTn4WbMM6B9i0JQcSnM/view?usp=sharing
 
 ## How to Run the Code
 
