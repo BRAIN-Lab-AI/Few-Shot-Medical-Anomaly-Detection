@@ -18,7 +18,7 @@ Attention-Enhanced Adapters: Integrating AdapterWithAttention modules that lever
 
 ### Project Documents
 - **Presentation:** [Project Presentation](/presentation.pptx)
-- **Report:** [Project Report](/report.pdf)
+- **Report:** [Project Report](/PG-Attention.pdf)
 
 ### Reference Paper
 - [Adapting Visual-Language Models for Generalizable Anomaly Detection in Medical Images](https://openaccess.thecvf.com/content/CVPR2024/papers/Huang_Adapting_Visual-Language_Models_for_Generalizable_Anomaly_Detection_in_Medical_Images_CVPR_2024_paper.pdf)
