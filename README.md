@@ -17,7 +17,7 @@ Attention-Enhanced Adapters: Integrating AdapterWithAttention modules that lever
 - **Affiliations:** KFUPM
 
 ### Project Documents
-- **Presentation:** [Project Presentation](/presentation.pptx)
+- **Presentation:** [Project Presentation](/Presentation.pptx)
 - **Report:** [Project Report](/PG-Attention.pdf)
 
 ### Reference Paper
